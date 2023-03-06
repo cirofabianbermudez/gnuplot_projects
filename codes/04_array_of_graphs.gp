@@ -9,7 +9,8 @@
 
 # Terminal default size 5in, 3in font "sans,12"
 reset
-set terminal pdfcairo size 7.5in, 9in font "Helvetica,16"
+unit = 1.5
+set terminal pdfcairo size unit*5in, unit*6in font "Helvetica,16"
 set output "04_array_of_graphs.pdf"
 
 xleft = 0; xright = 2*pi; xstep = 1
@@ -24,8 +25,7 @@ set ytics ydown,ystep,yup
 set border 1+2+4+8
 
 set key top right box
-#set key at 6,0.95 Right box
-
+# set key at 6,0.95 Right box
 
 grid_major = 100
 grid_minor = 101
@@ -63,12 +63,11 @@ set dummy t
 set title "f(t) = sin(t)" 
 set xlabel "t"; set ylabel "f(t)"
 f( t, a, w ) = a*sin(w*t)
-plot f( t, 1, 1 ) title "1*sin(1*t)" with lines
-
+plot f( t, 1, 1 ) title "1*sin(1*t)" with lines linestyle graph_style_1
 
 set title "f(t) = cos(t)" 
 set xlabel "t"; set ylabel "f(t)"
 g( t, a, w ) = a*cos(w*t)
-plot g( t, 1, 1 ) title "1*cos(1*t)" with lines
+plot g( t, 1, 1 ) title "1*cos(1*t)" with lines linestyle graph_style_2
 
 

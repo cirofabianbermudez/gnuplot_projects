@@ -1,20 +1,20 @@
 # Autor: Ciro Bermudez
-# File: 03_mult_graphs.gp
-# Description: Multiple sine waves
-# Run: load "03_mult_graphs.gp"
+# File: 08_sine_bars.gp
+# Description: Simple sine wave with bars
+# Run: load "08_sine_bars.gp"
 
 # reset
 # set terminal wxt
 # set output 
 
-# Terminal default size 5in, 3in font "sans,12"
+# Terminal pdfcairo default size 5in, 3in font "sans,12"  5:3 ratio
 reset
 unit = 1.5
 set terminal pdfcairo size unit*5in, unit*3in font "Helvetica,16"
-set output "03_mult_graphs.pdf"
+set output "08_sine_bars.pdf"
 
 xleft = 0; xright = 2*pi; xstep = 1
-ydown = -5; yup = 5; ystep = 1
+ydown = -1; yup = 1; ystep = 0.2
 
 set xrange [xleft:xright]
 set yrange [ydown:yup]
@@ -44,11 +44,15 @@ set tics scale 1,0.01
 # set key font ",20"
 # set title font ",20"
 
-LINECOLORS = "#ff0000  #00ff00 #0000ff  #ff00ff"
-selectcolor(i) = word(LINECOLORS,j)
-#LINECOLORS = "red green blue magenta cyan"
+graph_style1 = 102
+set style line graph_style1 linecolor rgb "#0000ff"\
+#                                     linewidth 1 \
+#                                     dashtype  1 \
+#                                     pointsize 1 \
+#                                     pointtype 4 \
+
 
 set samples 63
 set dummy t
-f( t, a, w ) = a*sin(w*t)
-plot for [j=1:4:1] f( t, j, 1) title "".j."*sin(t)" with lines linecolor rgb selectcolor(j)
+a = 1; w = 1
+plot a*sin(w*t) title "f(t) = sin(t)" with boxes linestyle graph_style1

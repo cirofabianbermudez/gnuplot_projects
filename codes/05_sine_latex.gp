@@ -9,12 +9,14 @@
 
 # Terminal default size 5in, 3in font "sans,12"
 # reset
-# set terminal pdfcairo size 7.5in, 4.5in font "Helvetica,16"
+# unit = 1.5
+# set terminal pdfcairo size unit*5in, unit*3in font "Helvetica,16"
 # set output "05_sine_latex.pdf"
 
-# Terminal default fontscale 0.6 size 5.00in, 3.00in
+# Terminal cairolatex default fontscale 0.6 size unit*5in, unit*3in
 reset
-set terminal cairolatex pdf size 5in, 4in
+unit = 1.5
+set terminal cairolatex pdf size unit*5in, unit*3in
 set output "cairolatex.tex"
 
 xleft = 0; xright = 2*pi; xstep = 1
@@ -29,6 +31,7 @@ set ytics ydown,ystep,yup
 set border 1+2+4+8
 
 set key top right box
+# set key at 6,0.95 Right box
 
 set title '$f(t) = \sin{t}$'
 set xlabel '$t$'; set ylabel '$f(t)$'
@@ -49,7 +52,7 @@ set tics scale 1,0.01
 
 graph_style = 102
 set style line graph_style linecolor rgb "#0000ff"\
-                                     linewidth 1 \
+                                     linewidth 1.5 \
                                      dashtype  1 \
                                      pointsize 1 \
                                      pointtype 4 \

@@ -1,17 +1,22 @@
 # Autor: Ciro Bermudez
-# File: 01_sine.gp
-# Description: Simple sine wave
-# Run: load "01_sine.gp"
+# File: 06_sine_pgn.gp
+# Description: Simple sine wave png
+# Run: load "06_sine_png.gp"
 
 # reset
 # set terminal wxt
 # set output 
 
-# Terminal pdfcairo default size 5in, 3in font "sans,12"  5:3 ratio
+# Terminal default size 5in, 3in font "sans,12"  5:3 ratio
+#reset
+#set terminal pdfcairo size 7.5in, 4.5in font "Helvetica,16"
+#set output "06_sine_png.pdf"
+
+# Terminal default size 640×480 pixels 4:3 ratio,  800×480  5:3 ratio
 reset
-unit = 1.5
-set terminal pdfcairo size unit*5in, unit*3in font "Helvetica,16"
-set output "01_sine.pdf"
+unit = 300
+set terminal pngcairo size unit*5,unit*3 font "Helvetica,20"
+set output "06_sine_png.png"
 
 xleft = 0; xright = 2*pi; xstep = 1
 ydown = -1; yup = 1; ystep = 0.2
@@ -25,7 +30,7 @@ set ytics ydown,ystep,yup
 set border 1+2+4+8
 
 set key top right box
-# set key at 6,0.95 Right box
+#set key at 6,0.95 Right box
 
 set title "f(t) = sin(t)" 
 set xlabel "t"; set ylabel "f(t)"
@@ -48,7 +53,7 @@ graph_style = 102
 set style line graph_style linecolor rgb "#0000ff"\
                                      linewidth 1 \
                                      dashtype  1 \
-                                     pointsize 1 \
+                                     pointsize 2.5 \
                                      pointtype 4 \
 
 set samples 63

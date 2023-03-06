@@ -7,9 +7,10 @@
 # set terminal wxt
 # set output 
 
-# Terminal default size 5in, 3in font "sans,12"
+# Terminal pdfcairo default size 5in, 3in font "sans,12"
 reset
-set terminal pdfcairo size 7.5in, 4.5in font "Helvetica,16"
+unit = 1.5
+set terminal pdfcairo size unit*5in, unit*3in font "Helvetica,16"
 set output "02_two_graphs.pdf"
 
 xleft = 0; xright = 2*pi; xstep = 1
@@ -24,7 +25,7 @@ set ytics ydown,ystep,yup
 set border 1+2+4+8
 
 set key bottom left box
-#set key at 6,0.95 Right box
+# set key at 6,0.95 Right box
 
 set title "f(t) = sin(t)" 
 set xlabel "t"; set ylabel "f(t)"

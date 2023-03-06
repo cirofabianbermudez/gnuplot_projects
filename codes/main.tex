@@ -2,14 +2,26 @@
 \usepackage[cp1252]{inputenc}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{lscape}
 
 \begin{document}
     \thispagestyle{empty}
-    \begin{figure}[h]
-        \begin{center}
-        \input{cairolatex}
-        \end{center}
-        %\caption{Some caption}
-    \end{figure}
+    
+    \begin{landscape}
+        \begin{figure}[h]
+	        \begin{center}
+	        \input{cairolatex}
+	        \end{center}
+	        %\caption{Some caption}
+        \end{figure}
+    \end{landscape}
+
+%        \begin{figure}[h]
+%	        \begin{center}
+%	        \input{cairolatex}
+%	        \end{center}
+%	        %\caption{Some caption}
+%        \end{figure}
+    
 
 \end{document}
