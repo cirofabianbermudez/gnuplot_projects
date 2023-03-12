@@ -52,7 +52,7 @@ set style arrow arrow_style head size 0.1,20\
                                  
 graph_style = 103
 set style line graph_style linecolor rgb "#0000ff"\
-                                     linewidth 1 \
+                                     linewidth 2 \
 #                                     dashtype  1 \
 #                                     pointsize 1 \
 #                                     pointtype 4 \
@@ -64,4 +64,4 @@ set style line graph_style linecolor rgb "#0000ff"\
 unset key
 set size square
 plot filename using 1:2:($3*0.4):4 with arrows arrowstyle arrow_style, \
-     "09_ode_solver.txt" using 1:2 with lines linestyle graph_style
+     "09_ode_solver.txt" using 1:2 title "pepe" with lines linestyle graph_style
