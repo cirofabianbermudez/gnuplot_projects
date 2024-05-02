@@ -470,3 +470,118 @@ set datafile missing "NaN"
 
 
 
+
+
+| Command | Description |
+| ----------- | ---- |
+| `help` | Open the help documentation. |
+| `exit` | Close gnuplot |
+| `reset` | The **reset**  command causes all graph-related options that can be set with the set command to return to their default values. |
+| `set terminal` | Display what kind of output to generate |
+
+
+
+## Terminals
+
+| Terminal   | Description                                      |
+| ---------- | ------------------------------------------------ |
+| `qt`       | Qt cross-platform interactive terminal           |
+| `wxt`      | wxWidgets cross-platform interactive terminal    |
+| `svg`      | W3C Scalable Vector Graphics                     |
+| `jpeg`     | JPEG images using libgd and TrueType fonts       |
+| `pdfcairo` | pdf terminal based on cairo                      |
+| `png`      | PNG images using libgd and TrueType fonts        |
+| `pngcairo` | png terminal based on cairo                      |
+| `epslatex` | LaTeX picture environment using graphicx package |
+
+
+
+## pdfcairo
+
+The **pdfcairo** terminal device generates output in pdf. The actual drawing  is done via cairo, a 2D graphics library, and pango, a library for laying out  and rendering text.
+
+```gnuplot
+set terminal pdfcairo
+```
+
+
+
+| Defaults                | Variants           |
+| ----------------------- | ------------------ |
+| `enhanced`              | `noenhanced`       |
+| `color`                 | `mono`             |
+| `font "Sans,12"`        |                    |
+| `fontscale 0.5`         |                    |
+| `linewidth 0.5`         |                    |
+| `butt`                  | `rounded`,`square` |
+| `dashlength 0.5`         |                    |
+| `background <rgbcolor>` |                    |
+| `size 5in, 3in`         |                    |
+
+
+
+## png
+
+PNG images are created using the external library  libgd.
+
+```gnuplot
+set terminal png
+```
+
+
+
+| Defaults                | Variants           |
+| ----------------------- | ------------------ |
+| `enhanced`              | `noenhanced`       |
+| `notransparent`         | `transparent`      |
+| `nointerlace`           | `interlace`        |
+| `notruecolor`           | `truecolor`        |
+| `rounded`               | `butt`        |
+| `linewidth 0.5`         |                    |
+| `dashlength 0.5`         |                    |
+| `font "Sans,12"`        |                    |
+| `fontscale 1`        |                    |
+| `linewidth 0.5`         |                    |
+| `size 640, 480`   |                    |
+| `nocrop`   | `crop` |
+| `background <rgbcolor>` |                    |
+
+
+
+## epslatex
+
+The **epslatex** driver generates output for further processing by LaTeX. 
+
+The epslatex terminal prints a plot as **terminal postscript  eps** but transfers the texts to LaTeX instead of including in the PostScript code. Thus, many options are the same as in the **postscript terminal**. 
+
+```powershell
+set terminal epslatex
+```
+
+
+
+| Defaults                | Variants      |
+| ----------------------- | ------------- |
+| `input`                 | `standalone`  |
+| `notransparent`         | `transparent` |
+| `nointerlace`           | `interlace`   |
+| `notruecolor`           | `truecolor`   |
+| `rounded`               | `butt`        |
+| `linewidth 1.0`         |               |
+| `dashlength 1.0`        |               |
+| `pointscale`            |               |
+| `font "Sans,12"`        |               |
+| `fontscale 1`           |               |
+| `linewidth 0.5`         |               |
+| `size 5in, 3.5in`       |               |
+| `nocrop`                | `crop`        |
+| `background <rgbcolor>` |               |
+
+
+
+## LaTeX fonts
+
+https://ctan.org/pkg/cm-unicode
+cmunrm.otf
+cmuntt.otf
+
