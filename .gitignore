@@ -1,0 +1,20 @@
+# Files
+*.pdf
+*.png
+*.jpg
+*.txt
+*.bak
+
+# Related to C/C++
+*.o
+*.exe
+
+# Related to LaTeX
+*.aux
+*.tex
+*.eps
+*.log
+*.gz
+
+# Directories
+books/

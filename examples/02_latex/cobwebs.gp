@@ -7,8 +7,14 @@ filename = "cobwebs"
 input_data = filename . ".txt"
 select = 3
 
+# Change the terminal from the command line
+if (ARGC >= 2) {
+    select = ARG2 + 0
+}
+
 if (select == 1) {
 # PNG Version
+  print "PNG Mode Selected"
   reset
   unit = 3
   set terminal pngcairo size unit*640, unit*384 font "CMU Serif, 10" fontscale 1*unit*0.95
@@ -18,6 +24,7 @@ if (select == 1) {
 }
 if (select == 2) {
 # PDF Version
+  print "PDF Mode Selected"
   reset
   unit = 2.5
   set terminal pdfcairo size unit*5in, unit*3in font "CMU Serif, 10" fontscale 0.5*unit
@@ -27,6 +34,7 @@ if (select == 2) {
 }
 if (select == 3){
 # LaTex Version
+  print "LaTeX Mode Selected"
   reset
   unit = 1.2
   set terminal epslatex standalone size unit*5in, unit*3in font ",9" 
@@ -77,6 +85,6 @@ plot input_data using 1:2 with lines linestyle graph_style, \
 
 # Restore default values
 reset
-set terminal wxt
+set terminal qt
 set output
 

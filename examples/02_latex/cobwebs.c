@@ -1,8 +1,8 @@
 /*
  * Author: Ciro Fabian Bermudez Marquez
  * Date: 16/06/2022
- * Desing name: B2_cobwebs.c
- * Description: Grafica para tesis cobwebs.
+ * Desing name: cobwebs.c
+ * Description: Cobwebs of chaotic map
  * Compile: gcc -o cobwebs.exe cobwebs.c
  * Run: ./cobwebs.exe 2.8 0.2 150
 */

@@ -35,5 +35,5 @@ test
 
 # Restore default values
 reset
-set terminal wxt
+set terminal qt
 set output
