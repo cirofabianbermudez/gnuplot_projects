@@ -15,7 +15,7 @@ test
 # PNG Version
 reset
 unit = 1.8
-set terminal png size unit*640, unit*384 font "Sans, 12" fontscale 1*unit*0.95
+set terminal pngcairo size unit*640, unit*384 font "Sans, 12" fontscale 1*unit*0.95
 set output filename . ".png"
 test
 

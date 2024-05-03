@@ -2,7 +2,7 @@
 PLATFORM_OS ?= WINDOWS
 TARGET = 00_test
 
-LATEX_OUT = *.aux *.tex *.eps *.log
+LATEX_OUT = *.aux *.tex *.eps *.log *.gz
 
 all: run
 
@@ -13,10 +13,7 @@ run:
 latex:
 	pdflatex -jobname=$(TARGET)_latex $(TARGET).tex > epslatex.log
 
-
 clean:
 	@echo "Cleaning..."
-	rm -rf *.pdf *.png *.jpg $(LATEX_OUT)
-
-
+	rm -rf *.pdf *.png *.jpg *.bak $(LATEX_OUT)
 

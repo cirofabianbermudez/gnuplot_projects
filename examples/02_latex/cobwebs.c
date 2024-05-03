@@ -19,7 +19,7 @@ double map(double x, double r){
 int main(int argc, char *argv[]){
 
     /* Open file */
-    char filename[] = "B2_cobwebs.txt";
+    char filename[] = "cobwebs.txt";
     FILE *file = fopen(filename, "w");
 
     /* Check for errors*/
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
-    printf("See B2_cobwebs.txt\n");
+    printf("See cobwebs.txt\n");
     printf("   r = %5.3lf\n", r);
     printf("  ic = %5.3lf\n", ic);
     printf("iter = %5d\n", iter);

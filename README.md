@@ -520,12 +520,12 @@ set terminal pdfcairo
 
 
 
-## png
+## pngcairo
 
-PNG images are created using the external library  libgd.
+The **pngcairo** terminal device generates output in png. The actual drawing  is done via cairo, a 2D graphics library, and pango, a library for laying out  and rendering text. 
 
 ```gnuplot
-set terminal png
+set terminal pngcairo
 ```
 
 
@@ -535,16 +535,17 @@ set terminal png
 | `enhanced`              | `noenhanced`       |
 | `notransparent`         | `transparent`      |
 | `nointerlace`           | `interlace`        |
-| `notruecolor`           | `truecolor`        |
-| `rounded`               | `butt`        |
+| `color`   | `mono`    |
+| `rounded`               | `butt`, `square` |
 | `linewidth 0.5`         |                    |
 | `dashlength 0.5`         |                    |
 | `font "Sans,12"`        |                    |
 | `fontscale 1`        |                    |
-| `linewidth 0.5`         |                    |
+| `linewidth 1`        |                    |
 | `size 640, 480`   |                    |
 | `nocrop`   | `crop` |
 | `background <rgbcolor>` |                    |
+| `pointscale 1` | |
 
 
 

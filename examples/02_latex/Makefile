@@ -1,27 +1,31 @@
-# Variables
-VAL=1.1
 
-# Target name
-TARGET = 
+PLATFORM_OS ?= WINDOWS
+TARGET = cobwebs
+VAL=3.6
+LATEX_OUT = *.aux *.tex *.eps *.log *.gz
+PDF_VIEWER = okular
 
-# Targets
-all: compile run
+.PHONY: compile run latex clean
+
+all: compile run latex
 
 compile:
+	@echo "> Compiling and executing C..."
 	gcc -o cobwebs.exe cobwebs.c
-	cobwebs.exe 2.8 0.2 150
+	$(TARGET).exe $(VAL) 0.2 150
 
 run:
-	gnuplot -c cobwebs.gp ${VAL}
-	pdflatex main.tex > pdflatex.log
+	@echo "> Running Gnuplot..."
+	gnuplot -c $(TARGET).gp ${VAL}
+
+latex:
+	@echo "> Compiling LaTeX..."
+	pdflatex -jobname=$(TARGET)_latex $(TARGET).tex > pdflatex.log
 
 view:
-	start main.pdf
+	okular $(TARGET)_latex.pdf &
 
 clean:
-	rm *.aux *.log *.pdf *.eps
+	@echo "> Cleaning..."
+	rm -rf *.pdf *.png *.jpg *.txt *.bak *.exe $(LATEX_OUT)
 
-help:
-	@echo "====================================="
-	@echo "               HELP"
-	@echo "====================================="
