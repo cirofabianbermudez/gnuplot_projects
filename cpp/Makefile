@@ -22,6 +22,7 @@ OBJ_DIR := obj
 BIN_DIR := bin
 INC_DIR := include
 OUT_DIR := output
+VIDEO_DIR := video
 
 # Compiler and flags
 CXX      := g++
@@ -84,9 +85,9 @@ $(TARGET): $(OBJS)
 run: ## Run C++ code
 	@echo -e "$(C_ORA)Running $(TARGET) $(NC)"
 	@rm -rf $(OUT_DIR)
-	@mkdir -p $(OUT_DIR)
+	@mkdir -p $(OUT_DIR) $(VIDEO_DIR)
 	./$(TARGET)
-	ffmpeg -y -framerate 30 -i $(OUT_DIR)/output%d.png -c:v libx264 -pix_fmt yuv420p -loglevel quiet output.mp4
+	ffmpeg -y -framerate 30 -i $(OUT_DIR)/output%d.png -c:v libx264 -pix_fmt yuv420p -loglevel quiet $(VIDEO_DIR)/output.mp4
 #______________________________________________________________________________
 
 .PHONY: clean
