@@ -21,6 +21,7 @@ SRC_DIR := src
 OBJ_DIR := obj
 BIN_DIR := bin
 INC_DIR := include
+OUT_DIR := output
 
 # Compiler and flags
 CXX      := g++
@@ -82,13 +83,16 @@ $(TARGET): $(OBJS)
 .PHONY: run
 run: ## Run C++ code
 	@echo -e "$(C_ORA)Running $(TARGET) $(NC)"
+	@rm -rf $(OUT_DIR)
+	@mkdir -p $(OUT_DIR)
 	./$(TARGET)
+	ffmpeg -y -framerate 30 -i $(OUT_DIR)/output%d.png -c:v libx264 -pix_fmt yuv420p -loglevel quiet output.mp4
 #______________________________________________________________________________
 
 .PHONY: clean
 clean: ## Remove compilation and executable files
 	@echo -e "$(C_ORA)Removing compilation files$(NC)"
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(OBJ_DIR) $(BIN_DIR) $(OUT_DIR)
 #______________________________________________________________________________
 
 .PHONY: help

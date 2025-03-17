@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <cmath>
 #include <thread>
 #include <chrono>
@@ -13,25 +14,36 @@ int main(){
     return 1;
   }
 
+  // Set gnuplot terminal
+  fprintf(gnuplotPipe, "set terminal pngcairo\n");
+
   // Set up the plot
   fprintf(gnuplotPipe, "set title 'Data from C++'\n");
   fprintf(gnuplotPipe, "set xlabel 'X-axis'\n");
   fprintf(gnuplotPipe, "set ylabel 'Y-axis'\n");
+  fprintf(gnuplotPipe, "unset key\n");
+  fprintf(gnuplotPipe, "set xrange [0.0:10.0]\n");
+  fprintf(gnuplotPipe, "set yrange [-1.5:1.5]\n");
+
 
   // Animation parameters
-  double phase = 0.0;
   double amplitude = 1.0;
   double frequency = 1.0;
+  double phase = 0.0;
 
-  // Number of animation frames
-  int numFrames = 100;
+  double endValue = 0.1;
+  std::string outName = "output/output";
+  std::string iterStr;
+  int i = 0;
 
   // Continuosly generate data and send to gnuplot
-  for (int frame = 0; frame < numFrames; frame++) {
+  while (true) {
     // Tell gnuplot to expect inline data
+    iterStr = outName + std::to_string(i++) + ".png";
+    fprintf(gnuplotPipe, "set output '%s'\n", iterStr.c_str());
     fprintf(gnuplotPipe, "plot '-' using 1:2 with lines title 'Sine Wave'\n");
-    double step = 0.1;
-    for (double x = 0.0; x <= 10.0; x += step) {
+    double step = 0.01;
+    for (double x = 0.0; x <= endValue; x += step) {
       // Calculate y value with shifting phase for animation effect
       double y = amplitude * std::sin(frequency * x + phase);
       fprintf(gnuplotPipe, "%lf %lf\n", x, y);
@@ -40,8 +52,9 @@ int main(){
     // Signal the end of inline data
     fprintf(gnuplotPipe, "e\n");
     fflush(gnuplotPipe);
-    std::this_thread::sleep_for(std::chrono::milliseconds(20));
-    phase += 0.5;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    endValue += 0.1;
+    if (endValue > 10.0) break;
 
   }
 

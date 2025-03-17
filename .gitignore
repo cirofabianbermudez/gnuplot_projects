@@ -4,6 +4,7 @@
 *.jpg
 *.txt
 *.bak
+*.mp4
 
 # Related to C/C++
 *.o
@@ -18,3 +19,4 @@
 
 # Directories
 books/
+output/
