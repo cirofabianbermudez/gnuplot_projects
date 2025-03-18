@@ -15,7 +15,9 @@ int main(){
   }
 
   // Set gnuplot terminal
-  fprintf(gnuplotPipe, "set terminal pngcairo\n");
+  fprintf(gnuplotPipe, "reset\n");
+  fprintf(gnuplotPipe, "unit = 3\n");
+  fprintf(gnuplotPipe, "set terminal pngcairo size unit*640, unit*384 font 'CMU Serif, 10' fontscale 1*unit*0.95\n");
 
   // Set up the plot
   fprintf(gnuplotPipe, "set title 'Data from C++'\n");
@@ -24,6 +26,9 @@ int main(){
   fprintf(gnuplotPipe, "unset key\n");
   fprintf(gnuplotPipe, "set xrange [0.0:10.0]\n");
   fprintf(gnuplotPipe, "set yrange [-1.5:1.5]\n");
+
+  fprintf(gnuplotPipe, "set tics format '%%.1f'\n");
+  fprintf(gnuplotPipe, "set grid\n");
 
 
   // Animation parameters
